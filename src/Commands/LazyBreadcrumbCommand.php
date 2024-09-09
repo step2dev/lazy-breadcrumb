@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Step2Dev\LazyBreadcrumb\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LazyBreadcrumbCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'lazy-breadcrumb';
 
     public $description = 'My command';
 
