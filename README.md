@@ -1,4 +1,11 @@
-# 🧭 Lazy Breadcrumb
+# 🧭 Lazy Breadcrumb [![License: MIT](https://img.shields.io/github/license/step2dev/lazy-breadcrumb?style=flat-square)](LICENSE.md) [![Contributors](https://img.shields.io/github/contributors/step2dev/lazy-breadcrumb.svg?style=flat-square)](https://github.com/step2dev/lazy-breadcrumb/graphs/contributors) ![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/step2dev/lazy-breadcrumb/php) ![Packagist Laravel Version](https://img.shields.io/packagist/dependency-v/step2dev/lazy-breadcrumb/illuminate/contracts)
+
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/step2dev/lazy-breadcrumb.svg?style=flat-square)](https://packagist.org/packages/step2dev/lazy-breadcrumb)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/step2dev/lazy-breadcrumb/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/step2dev/lazy-breadcrumb/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/step2dev/lazy-breadcrumb/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/step2dev/lazy-breadcrumb/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![PHPStan](https://github.com/step2dev/lazy-breadcrumb/actions/workflows/phpstan.yml/badge.svg)](https://github.com/step2dev/lazy-breadcrumb/actions/workflows/phpstan.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/step2dev/lazy-breadcrumb.svg?style=flat-square)](https://packagist.org/packages/step2dev/lazy-breadcrumb)
 
 > A modern, developer-first breadcrumb generator for Laravel with Blade components, SEO-ready JSON-LD, Artisan tooling, and flexible DSL/macros.
 
