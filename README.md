@@ -1,84 +1,135 @@
-# This is my package lazy-breadcrumb
+# 🧭 Lazy Breadcrumb
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/step2dev/lazy-breadcrumb.svg?style=flat-square)](https://packagist.org/packages/step2dev/lazy-breadcrumb)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/step2dev/lazy-breadcrumb/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/step2dev/lazy-breadcrumb/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/step2dev/lazy-breadcrumb/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/step2dev/lazy-breadcrumb/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/step2dev/lazy-breadcrumb.svg?style=flat-square)](https://packagist.org/packages/step2dev/lazy-breadcrumb)
+> A modern, developer-first breadcrumb generator for Laravel with Blade components, SEO-ready JSON-LD, Artisan tooling, and flexible DSL/macros.
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+---
 
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/lazy-breadcrumb.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/lazy-breadcrumb)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
-
-## Installation
-
-You can install the package via composer:
+## 🚀 Installation
 
 ```bash
 composer require step2dev/lazy-breadcrumb
 ```
 
-You can publish and run the migrations with:
+### Optional: Publish config and views
 
 ```bash
-php artisan vendor:publish --tag="lazy-breadcrumb-migrations"
-php artisan migrate
+php artisan vendor:publish --tag=lazy-breadcrumb-config
+php artisan vendor:publish --tag=lazy-breadcrumb-views
 ```
 
-You can publish the config file with:
+---
 
-```bash
-php artisan vendor:publish --tag="lazy-breadcrumb-config"
-```
+## ✨ Features
 
-This is the contents of the published config file:
+- `Breadcrumbs::for()` API
+- Blade components (`<x-breadcrumbs />`, `<x-breadcrumbs-json-ld />`)
+- Auto-title support: `$trail->model($model)`
+- Custom push: `$trail->push('Title', 'url')`
+- Replacing last item: `$trail->replaceLast('New Title')`
+- Copy parent trail: `$trail->import([...])`
+- Macro support: `Breadcrumbs::macro('key', fn ($trail) => ...)`
+- SEO-ready: JSON-LD output for search engines
+- Auto-discovery: optional `route:breadcrumbs:sync`
+- Full Artisan tooling
+
+---
+
+## 📌 Defining Breadcrumbs
+
+Create a `routes/breadcrumbs.php` file:
 
 ```php
-return [
-];
+use Step2dev\LazyBreadcrumb\Breadcrumbs;
+use Step2dev\LazyBreadcrumb\Breadcrumbs\Trail;
+
+Breadcrumbs::for('dashboard', function (Trail $trail) {
+    $trail->push(__('Dashboard'), route('dashboard'));
+});
+
+Breadcrumbs::for('profile', function (Trail $trail) {
+    $trail->push(__('Dashboard'), route('dashboard'))
+          ->push(__('Profile'), route('profile'));
+});
 ```
 
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="lazy-breadcrumb-views"
-```
-
-## Usage
+You can also use:
 
 ```php
-$lazyBreadcrumb = new Step2Dev\LazyBreadcrumb();
-echo $lazyBreadcrumb->echoPhrase('Hello, Step2Dev!');
+$trail->model($user); // Auto title from $user->name, title, or slug
+$trail->replaceLast('Editing');
+$trail->import([...]); // Reuse a parent breadcrumb
 ```
 
-## Testing
+---
+
+## 🧩 Blade Components
+
+Use directly in any view:
+
+```blade
+<x-breadcrumbs />
+<x-breadcrumbs-json-ld /> {{-- SEO only --}}
+```
+
+To customize the view, publish and modify `resources/views/components/breadcrumbs.blade.php`.
+
+---
+
+## 🧪 Artisan Commands
+
+| Command                          | Description                          |
+|----------------------------------|--------------------------------------|
+| `make:breadcrumb name`           | Add breadcrumb entry to `routes/breadcrumbs.php` |
+| `breadcrumbs:list`               | List all route-to-breadcrumb matches |
+| `breadcrumbs:list --missing`     | Show named routes without breadcrumbs |
+| `breadcrumbs:test`               | Run tests against all definitions    |
+| `route:breadcrumbs:sync`         | Autogenerate missing breadcrumb stubs |
+
+---
+
+## 🧠 View Sharing
+
+To make breadcrumbs available globally:
+
+```php
+// Middleware registration
+\Step2dev\LazyBreadcrumb\Middleware\ShareBreadcrumbs::class
+```
+
+Then in views:
+
+```blade
+@foreach ($breadcrumbs as $crumb)
+    <a href="{{ $crumb['url'] }}">{{ $crumb['title'] }}</a>
+@endforeach
+```
+
+---
+
+## 📦 Preset (Optional)
+
+Register the service provider:
+
+```php
+\Step2dev\LazyBreadcrumb\LazyBreadcrumbPresetServiceProvider::class
+```
+
+Then run:
+
+```bash
+php artisan preset lazy-breadcrumb
+```
+
+---
+
+## 🧪 Testing
 
 ```bash
 composer test
 ```
 
-## Changelog
+---
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+## 📝 License
 
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
-## Credits
-
-- [CrazyBoy49z](https://github.com/step2dev)
-- [All Contributors](../../contributors)
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+MIT
