@@ -2,10 +2,9 @@
 
 namespace Step2Dev\LazyBreadcrumb;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 use Step2Dev\LazyBreadcrumb\Breadcrumbs\Trail;
-use Illuminate\Support\Collection;
-
 
 class Breadcrumbs
 {
@@ -19,12 +18,13 @@ class Breadcrumbs
     public static function generate(?string $name = null, array $params = []): array
     {
         $name ??= Route::current()?->getName();
-        if (!$name || !isset(static::$definitions[$name])) {
+        if (! $name || ! isset(static::$definitions[$name])) {
             return [];
         }
 
-        $trail = new Trail();
+        $trail = new Trail;
         static::$definitions[$name]($trail, $params);
+
         return $trail->get();
     }
 
@@ -47,9 +47,9 @@ class Breadcrumbs
             ];
         }
 
-        return '<script type="application/ld+json">' .
+        return '<script type="application/ld+json">'.
             json_encode($structured, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
-            . '</script>';
+            .'</script>';
     }
 
     public static function toArray(?string $name = null, array $params = []): array
@@ -65,6 +65,7 @@ class Breadcrumbs
     public static function has(?string $name = null): bool
     {
         $name ??= Route::current()?->getName();
+
         return $name && array_key_exists($name, static::$definitions);
     }
 
@@ -78,6 +79,7 @@ class Breadcrumbs
         foreach ($breadcrumbs as $crumb) {
             $this->breadcrumbs[] = $crumb;
         }
+
         return $this;
     }
 
@@ -85,5 +87,4 @@ class Breadcrumbs
     {
         self::$definitions[$name] = $callback;
     }
-
 }

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\Route as LaravelRoute;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Route;
 use Step2Dev\LazyBreadcrumb\Breadcrumbs;
 use Step2Dev\LazyBreadcrumb\Breadcrumbs\Trail;
 
@@ -33,7 +33,9 @@ Router::macro('resourceWithBreadcrumbs', function (
 
     foreach ($routes->getRoutes() as $route) {
         $routeName = $route->getName();
-        if (!$routeName) continue;
+        if (! $routeName) {
+            continue;
+        }
 
         Breadcrumbs::for($routeName, function (Trail $trail, $params = []) use ($routeName, $parts, $titles) {
             foreach ($parts as $i => $segment) {
@@ -43,7 +45,7 @@ Router::macro('resourceWithBreadcrumbs', function (
                 $titleKey = $titles[$segment] ?? $segment;
                 $title = __($titleKey);
                 $urlParts = array_slice($parts, 0, $i + 1);
-                $routeGuess = implode('.', $urlParts) . '.index';
+                $routeGuess = implode('.', $urlParts).'.index';
 
                 $routeParams = [];
                 foreach ($urlParts as $seg) {
@@ -68,5 +70,3 @@ Router::macro('resourceWithBreadcrumbs', function (
 
     return $routes;
 });
-
-

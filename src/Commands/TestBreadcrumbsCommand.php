@@ -8,6 +8,7 @@ use Step2Dev\LazyBreadcrumb\Breadcrumbs;
 class TestBreadcrumbsCommand extends Command
 {
     protected $signature = 'breadcrumbs:test';
+
     protected $description = 'Test all registered breadcrumb definitions';
 
     final public function handle(): void
@@ -18,7 +19,7 @@ class TestBreadcrumbsCommand extends Command
         foreach ($all as $name) {
             try {
                 $items = Breadcrumbs::generate($name);
-                if (!is_array($items)) {
+                if (! is_array($items)) {
                     $failures[] = [$name, 'Returned non-array'];
                 }
             } catch (\Throwable $e) {
@@ -28,7 +29,7 @@ class TestBreadcrumbsCommand extends Command
 
         if (count($failures)) {
             $this->table(['Route', 'Error'], $failures);
-            $this->error(count($failures) . ' failed.');
+            $this->error(count($failures).' failed.');
         } else {
             $this->info('✅ All breadcrumbs passed');
         }

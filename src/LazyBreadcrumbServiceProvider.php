@@ -28,9 +28,8 @@ class LazyBreadcrumbServiceProvider extends PackageServiceProvider
             ->hasCommand(ListBreadcrumbsCommand::class)
             ->hasCommand(MakeBreadcrumbCommand::class)
             ->hasCommand(SyncBreadcrumbsCommand::class)
-            ->hasCommand(TestBreadcrumbsCommand::class)
-        ;
-//            ->hasCommand(LazyBreadcrumbCommand::class);
+            ->hasCommand(TestBreadcrumbsCommand::class);
+        //            ->hasCommand(LazyBreadcrumbCommand::class);
 
         $this->registerMacros();
 
