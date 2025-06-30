@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Routing\Route as LaravelRoute;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Step2Dev\LazyBreadcrumb\Breadcrumbs;
@@ -53,7 +52,7 @@ Router::macro('resourceWithBreadcrumbs', function (
 
                 $routeParams = [];
                 foreach ($urlParts as $seg) {
-                    $key =  Str::singular($seg);
+                    $key = Str::singular($seg);
                     if (array_key_exists($key, $params)) {
                         $routeParams[$key] = $params[$key];
                     }
