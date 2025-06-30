@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 
 class Breadcrumbs
 {
-    protected static array $definitions = [];
+    private static array $definitions = [];
 
     public static function for(string $name, \Closure $callback): void
     {
