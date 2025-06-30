@@ -7,7 +7,7 @@ use Step2Dev\LazyBreadcrumb\View\Components\Breadcrumbs;
 use Step2Dev\LazyBreadcrumb\View\Components\BreadcrumbsJsonLd;
 
 it('renders the blade components', function () {
-    $breadcrumbsComponent = new Breadcrumbs();
+    $breadcrumbsComponent = new Breadcrumbs;
     $jsonLdComponent = new BreadcrumbsJsonLd([]);
 
     expect($breadcrumbsComponent->render())->not()->toBeNull()
