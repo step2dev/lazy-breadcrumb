@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trail
 {
-    protected array $breadcrumbs = [];
+    private array $breadcrumbs = [];
 
     public function push(string $title, string $url): static
     {

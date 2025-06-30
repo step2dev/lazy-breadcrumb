@@ -3,15 +3,13 @@
 namespace Step2Dev\LazyBreadcrumb\Commands;
 
 use Illuminate\Console\Command;
-use Step2dev\LazyBreadcrumb\Breadcrumbs;
-use Step2dev\LazyBreadcrumb\Breadcrumbs\Trail;
 
 class MakeBreadcrumbCommand extends Command
 {
     protected $signature = 'make:breadcrumb {name : The route name for the breadcrumb}';
     protected $description = 'Create a breadcrumb entry in routes/breadcrumbs.php';
 
-    public function handle(): void
+    final public function handle(): void
     {
         $name = $this->argument('name');
         $file = base_path('routes/breadcrumbs.php');

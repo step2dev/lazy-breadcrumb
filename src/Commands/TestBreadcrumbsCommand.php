@@ -10,7 +10,7 @@ class TestBreadcrumbsCommand extends Command
     protected $signature = 'breadcrumbs:test';
     protected $description = 'Test all registered breadcrumb definitions';
 
-    public function handle(): void
+    final public function handle(): void
     {
         $all = Breadcrumbs::all();
         $failures = [];

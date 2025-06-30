@@ -11,7 +11,7 @@ class ListBreadcrumbsCommand extends Command
     protected $signature = 'breadcrumbs:list {--missing : Show only routes without breadcrumbs}';
     protected $description = 'List all named routes and whether they have breadcrumbs';
 
-    public function handle(): void
+    final public function handle(): void
     {
         $routes = collect(Route::getRoutes())->filter(fn ($route) => $route->getName());
 

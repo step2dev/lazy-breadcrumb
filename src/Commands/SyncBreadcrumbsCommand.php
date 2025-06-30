@@ -12,7 +12,7 @@ class SyncBreadcrumbsCommand extends Command
     protected $signature = 'route:breadcrumbs:sync {--force : Overwrite existing routes/breadcrumbs.php file}';
     protected $description = 'Generate breadcrumbs stubs for all named routes not yet defined';
 
-    public function handle(): void
+    final public function handle(): void
     {
         $fs = new Filesystem();
         $path = base_path('routes/breadcrumbs.php');
