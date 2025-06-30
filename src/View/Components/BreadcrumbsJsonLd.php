@@ -2,8 +2,8 @@
 
 namespace Step2dev\LazyBreadcrumb\View\Components;
 
-use Illuminate\View\Component;
 use Illuminate\Support\Facades\Route;
+use Illuminate\View\Component;
 use Step2dev\LazyBreadcrumb\Breadcrumbs;
 
 class BreadcrumbsJsonLd extends Component

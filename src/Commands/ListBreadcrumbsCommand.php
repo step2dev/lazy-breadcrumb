@@ -9,6 +9,7 @@ use Step2Dev\LazyBreadcrumb\Breadcrumbs;
 class ListBreadcrumbsCommand extends Command
 {
     protected $signature = 'breadcrumbs:list {--missing : Show only routes without breadcrumbs}';
+
     protected $description = 'List all named routes and whether they have breadcrumbs';
 
     final public function handle(): void
@@ -16,7 +17,7 @@ class ListBreadcrumbsCommand extends Command
         $routes = collect(Route::getRoutes())->filter(fn ($route) => $route->getName());
 
         if ($this->option('missing')) {
-            $routes = $routes->filter(fn ($route) => !Breadcrumbs::has($route->getName()));
+            $routes = $routes->filter(fn ($route) => ! Breadcrumbs::has($route->getName()));
         }
 
         $this->table(

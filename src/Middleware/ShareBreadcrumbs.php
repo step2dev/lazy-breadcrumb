@@ -12,6 +12,7 @@ class ShareBreadcrumbs
     public function handle(Request $request, Closure $next)
     {
         View::share('breadcrumbs', Breadcrumbs::generate());
+
         return $next($request);
     }
 }
