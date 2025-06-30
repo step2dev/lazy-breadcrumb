@@ -27,8 +27,7 @@ class LazyBreadcrumbServiceProvider extends PackageServiceProvider
 //            ->hasMigration('create_lazy_breadcrumb_table')
             ->hasCommand(ListBreadcrumbsCommand::class)
             ->hasCommand(MakeBreadcrumbCommand::class)
-            ->hasCommand(SyncBreadcrumbsCommand::class)
-            ->hasCommand(TestBreadcrumbsCommand::class);
+            ->hasCommand(SyncBreadcrumbsCommand::class);
         //            ->hasCommand(LazyBreadcrumbCommand::class);
 
         $this->registerMacros();
