@@ -45,5 +45,4 @@ class Trail
 
         return $this;
     }
-
 }
