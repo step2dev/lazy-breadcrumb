@@ -5,7 +5,7 @@ namespace Step2Dev\LazyBreadcrumb\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use Step2dev\LazyBreadcrumb\Breadcrumbs;
+use Step2Dev\LazyBreadcrumb\Breadcrumbs;
 
 class ShareBreadcrumbs
 {

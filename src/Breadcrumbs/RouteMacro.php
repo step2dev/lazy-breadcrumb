@@ -7,7 +7,7 @@ use Step2Dev\LazyBreadcrumb\Breadcrumbs;
 use Step2Dev\LazyBreadcrumb\Breadcrumbs\Trail;
 
 Route::macro('breadcrumbs', function ($callback = null) {
-    /** @var LaravelRoute $this */
+    /** @var Router $this */
     $name = $this->getName();
 
     if ($name && is_callable($callback)) {
@@ -39,7 +39,7 @@ Router::macro('resourceWithBreadcrumbs', function (
 
         Breadcrumbs::for($routeName, function (Trail $trail, $params = []) use ($routeName, $parts, $titles) {
             foreach ($parts as $i => $segment) {
-                $paramKey = str_singular($segment);
+                $paramKey = Str::singular($segment);
                 $hasParam = array_key_exists($paramKey, $params);
 
                 $titleKey = $titles[$segment] ?? $segment;
@@ -49,7 +49,7 @@ Router::macro('resourceWithBreadcrumbs', function (
 
                 $routeParams = [];
                 foreach ($urlParts as $seg) {
-                    $key = str_singular($seg);
+                    $key =  Str::singular($seg);
                     if (array_key_exists($key, $params)) {
                         $routeParams[$key] = $params[$key];
                     }

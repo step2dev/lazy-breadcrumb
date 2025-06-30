@@ -4,7 +4,7 @@ namespace Step2Dev\LazyBreadcrumb\View\Components;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
-use Step2dev\LazyBreadcrumb\Breadcrumbs as BreadcrumbsGenerator;
+use Step2Dev\LazyBreadcrumb\Breadcrumbs as BreadcrumbsGenerator;
 
 class Breadcrumbs extends Component
 {

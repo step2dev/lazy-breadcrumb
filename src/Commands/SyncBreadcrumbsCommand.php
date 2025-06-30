@@ -28,7 +28,7 @@ class SyncBreadcrumbsCommand extends Command
         $existing = file_get_contents($path);
         $added = 0;
 
-        foreach (Route::getRoutes() as $route) {
+        foreach (Route::getRoutes()->getRoutes() as $route) {
             $name = $route->getName();
             if (! $name || Breadcrumbs::has($name) || str_contains($existing, "Breadcrumbs::for('{$name}'")) {
                 continue;

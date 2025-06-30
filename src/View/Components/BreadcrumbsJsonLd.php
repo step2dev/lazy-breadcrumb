@@ -1,10 +1,10 @@
 <?php
 
-namespace Step2dev\LazyBreadcrumb\View\Components;
+namespace Step2Dev\LazyBreadcrumb\View\Components;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
-use Step2dev\LazyBreadcrumb\Breadcrumbs;
+use Step2Dev\LazyBreadcrumb\Breadcrumbs;
 
 class BreadcrumbsJsonLd extends Component
 {

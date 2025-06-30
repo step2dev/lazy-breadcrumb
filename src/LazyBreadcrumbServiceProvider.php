@@ -8,7 +8,7 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Step2Dev\LazyBreadcrumb\Commands\ListBreadcrumbsCommand;
 use Step2Dev\LazyBreadcrumb\Commands\MakeBreadcrumbCommand;
 use Step2Dev\LazyBreadcrumb\Commands\SyncBreadcrumbsCommand;
-use Step2dev\LazyBreadcrumb\View\Components\BreadcrumbsJsonLd;
+use Step2Dev\LazyBreadcrumb\View\Components\BreadcrumbsJsonLd;
 
 class LazyBreadcrumbServiceProvider extends PackageServiceProvider
 {
