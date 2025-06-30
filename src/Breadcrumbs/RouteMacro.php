@@ -10,7 +10,6 @@ Route::macro('breadcrumbs', function ($callback = null) {
     // @phpstan-ignore-next-line
     $name = $this->getName();
 
-
     if ($name && is_callable($callback)) {
         Breadcrumbs::for($name, $callback);
     }
