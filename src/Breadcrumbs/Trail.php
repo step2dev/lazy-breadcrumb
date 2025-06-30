@@ -36,4 +36,14 @@ class Trail
 
         return $this;
     }
+
+    public function import(array $breadcrumbs): static
+    {
+        foreach ($breadcrumbs as $crumb) {
+            $this->breadcrumbs[] = $crumb;
+        }
+
+        return $this;
+    }
+
 }

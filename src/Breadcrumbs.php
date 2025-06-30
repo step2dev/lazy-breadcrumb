@@ -2,6 +2,7 @@
 
 namespace Step2Dev\LazyBreadcrumb;
 
+use Closure;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 use Step2Dev\LazyBreadcrumb\Breadcrumbs\Trail;
@@ -10,20 +11,20 @@ class Breadcrumbs
 {
     private static array $definitions = [];
 
-    public static function for(string $name, \Closure $callback): void
+    public static function for(string $name, Closure $callback): void
     {
-        static::$definitions[$name] = $callback;
+        self::$definitions[$name] = $callback;
     }
 
     public static function generate(?string $name = null, array $params = []): array
     {
         $name ??= Route::current()?->getName();
-        if (! $name || ! isset(static::$definitions[$name])) {
+        if (! $name || ! isset(self::$definitions[$name])) {
             return [];
         }
 
         $trail = new Trail;
-        static::$definitions[$name]($trail, $params);
+        self::$definitions[$name]($trail, $params);
 
         return $trail->get();
     }
@@ -66,24 +67,15 @@ class Breadcrumbs
     {
         $name ??= Route::current()?->getName();
 
-        return $name && array_key_exists($name, static::$definitions);
+        return $name && array_key_exists($name, self::$definitions);
     }
 
     public static function all(): array
     {
-        return array_keys(static::$definitions);
+        return array_keys(self::$definitions);
     }
 
-    public function import(array $breadcrumbs): static
-    {
-        foreach ($breadcrumbs as $crumb) {
-            $this->breadcrumbs[] = $crumb;
-        }
-
-        return $this;
-    }
-
-    public static function macro(string $name, \Closure $callback): void
+    public static function macro(string $name, Closure $callback): void
     {
         self::$definitions[$name] = $callback;
     }
