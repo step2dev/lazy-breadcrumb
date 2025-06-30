@@ -11,6 +11,7 @@ class LazyBreadcrumb extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Step2Dev\LazyBreadcrumb\LazyBreadcrumb::class;
+        // @phpstan-ignore-next-line
+        return \Step2Dev\LazyBreadcrumb\Breadcrumbs::class;
     }
 }

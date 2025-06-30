@@ -7,13 +7,16 @@ use Step2Dev\LazyBreadcrumb\Breadcrumbs;
 use Step2Dev\LazyBreadcrumb\Breadcrumbs\Trail;
 
 Route::macro('breadcrumbs', function ($callback = null) {
-    /** @var Router $this */
+    /** @var LaravelRoute $this */
+    // @phpstan-ignore-next-line
     $name = $this->getName();
+
 
     if ($name && is_callable($callback)) {
         Breadcrumbs::for($name, $callback);
     }
 
+    // @phpstan-ignore-next-line
     return $this;
 });
 
@@ -31,6 +34,7 @@ Router::macro('resourceWithBreadcrumbs', function (
     $lastPart = end($parts);
     $baseTitle = $titles[$lastPart] ?? ucfirst(str_replace('_', ' ', $lastPart));
 
+    // @phpstan-ignore-next-line
     foreach ($routes->getRoutes() as $route) {
         $routeName = $route->getName();
         if (! $routeName) {
