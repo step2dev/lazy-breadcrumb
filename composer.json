@@ -34,8 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Step2Dev\\LazyBreadcrumb\\": "src/",
-            "Step2Dev\\LazyBreadcrumb\\Database\\Factories\\": "database/factories/"
+            "Step2Dev\\LazyBreadcrumb\\": "src/"
         }
     },
     "autoload-dev": {
