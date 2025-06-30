@@ -1,9 +1,9 @@
 <?php
 
-namespace Step2dev\LazyBreadcrumb\Commands;
+namespace Step2Dev\LazyBreadcrumb\Commands;
 
 use Illuminate\Console\Command;
-use Step2dev\LazyBreadcrumb\Breadcrumbs;
+use Step2Dev\LazyBreadcrumb\Breadcrumbs;
 
 class TestBreadcrumbsCommand extends Command
 {

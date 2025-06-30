@@ -5,7 +5,7 @@ namespace Step2Dev\LazyBreadcrumb\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Filesystem\Filesystem;
-use Step2dev\LazyBreadcrumb\Breadcrumbs;
+use Step2Dev\LazyBreadcrumb\Breadcrumbs;
 
 class SyncBreadcrumbsCommand extends Command
 {

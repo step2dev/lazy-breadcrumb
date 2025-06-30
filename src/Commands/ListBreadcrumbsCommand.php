@@ -4,7 +4,7 @@ namespace Step2Dev\LazyBreadcrumb\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Route;
-use Step2dev\LazyBreadcrumb\Breadcrumbs;
+use Step2Dev\LazyBreadcrumb\Breadcrumbs;
 
 class ListBreadcrumbsCommand extends Command
 {
