@@ -1,10 +1,13 @@
 {
     "name": "step2dev/lazy-breadcrumb",
-    "description": "This is my package lazy-breadcrumb",
+    "description": "A simple, convenient, and flexible package for generating breadcrumbs in Laravel — minimal code, maximum flexibility, and automation.",
     "keywords": [
-        "Step2Dev",
         "laravel",
-        "lazy-breadcrumb"
+        "breadcrumbs",
+        "lazy-breadcrumbs",
+        "navigation",
+        "step2dev",
+        "navigation-path"
     ],
     "homepage": "https://github.com/step2dev/lazy-breadcrumb",
     "license": "MIT",
